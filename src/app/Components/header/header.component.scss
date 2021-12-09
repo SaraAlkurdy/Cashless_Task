@@ -4,16 +4,14 @@ nav {
         margin-left: auto;
         li {
             margin-right: 20px;
-            &:nth-child(3) {
-                button {
-                    border: 1px solid #f83843;
-                }
+
+            .login-btn {
+                border: 1px solid #f83843;
             }
-            &:nth-child(4) {
-                button {
-                    background: #f83843;
-                    color: #fff;
-                }
+
+            .logout-btn {
+                background: #f83843;
+                color: #fff;
             }
             a {
                 color: #000;

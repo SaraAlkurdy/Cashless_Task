@@ -13,15 +13,15 @@
         <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active"
           [routerLinkActiveOptions]="{exact: true}">Home </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="authServ.isAuthenticated">
         <a class="nav-link" [routerLink]="['/customer-list']" routerLinkActive="active"
           [routerLinkActiveOptions]="{exact: true}">Customer Listing</a>
       </li>
-      <li class="nav-item">
-        <button class="btn" (click)="login()">Login</button>
+      <li class="nav-item" *ngIf="!authServ.isAuthenticated">
+        <button class="btn login-btn" (click)="login()">Login</button>
       </li>
-      <li class="nav-item">
-        <button class="btn" (click)="logout()">Logout</button>
+      <li class="nav-item" *ngIf="authServ.isAuthenticated">
+        <button class="btn logout-btn" (click)="logout()">Logout</button>
       </li>
     </ul>
   </div>
