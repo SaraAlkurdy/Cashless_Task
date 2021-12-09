@@ -1,0 +1,28 @@
+form {
+    .mat-dialog-title {
+        text-transform: capitalize;
+        color: red;
+        text-align: center;
+    }
+
+    .mat-dialog-content {
+        width: 70vh;
+        .mat-form-field {
+            width: 100%;
+        }
+    }
+
+    .mat-dialog-actions {
+        padding: 20px 0;
+        button {
+            color: #fff;
+            &:first-child {
+                background: #f83843;
+                margin-right: 5px;
+            }
+            &:last-child {
+                background: #000;
+            }
+        }
+    }
+}

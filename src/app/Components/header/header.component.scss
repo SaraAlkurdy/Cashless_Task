@@ -1,0 +1,48 @@
+nav {
+    border-bottom: 1px solid #f83843;
+    ul {
+        margin-left: auto;
+        li {
+            margin-right: 20px;
+            &:nth-child(3) {
+                button {
+                    border: 1px solid #f83843;
+                }
+            }
+            &:nth-child(4) {
+                button {
+                    background: #f83843;
+                    color: #fff;
+                }
+            }
+            a {
+                color: #000;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    nav {
+        .navbar-collapse {
+            background: #000;
+            border-radius: 20px;
+            padding: 20px;
+            ul {
+                li {
+                    margin-right: 0;
+                    border-bottom: 1px solid #f83843;
+                    &:nth-child(3) {
+                        button {
+                            background: #fff;
+                            margin-bottom: 10px;
+                        }
+                    }
+                    a {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}

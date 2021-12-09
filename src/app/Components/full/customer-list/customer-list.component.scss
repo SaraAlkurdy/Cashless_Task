@@ -1,0 +1,35 @@
+.customer-title {
+    h4 {
+        font-weight: 700;
+        text-transform: capitalize;
+        margin: 50px 0 40px;
+        border-bottom: 1px dotted red;
+        width: fit-content;
+    }
+}
+
+table {
+    thead {
+        th {
+            font-weight: 600;
+        }
+    }
+    tbody {
+        td {
+            vertical-align: middle;
+            &:last-child {
+                button {
+                    border-radius: 50%;
+                    color: #fff;
+                    &:first-child {
+                        background: #000;
+                        margin-right: 5px;
+                    }
+                    &:last-child {
+                        background: #f83843;
+                    }
+                }
+            }
+        }
+    }
+}

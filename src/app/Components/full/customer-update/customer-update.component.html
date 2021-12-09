@@ -1,0 +1,31 @@
+<form [formGroup]="customerForm">
+  <h5 mat-dialog-title>{{title}}</h5>
+  <mat-dialog-content class="mat-typography">
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>first name</mat-label>
+        <input type="text" matInput formControlName="first_name">
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>last name</mat-label>
+        <input type="text" matInput formControlName="last_name">
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>email</mat-label>
+        <input type="text" matInput formControlName="email">
+      </mat-form-field>
+    </p>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button class="btn" mat-button (click)="onUpdate(customerForm.value)">Update</button>
+    <button class="btn" mat-button mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+</form>

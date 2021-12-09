@@ -1,0 +1,43 @@
+<div class="login">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="row">
+      <div class="col-12">
+        <div class="login-form">
+          <div class="form-title">
+            <h2>sign in</h2>
+            <hr>
+          </div>
+          <div class="form-fields">
+            <mat-form-field class="w-100" appearance="standard">
+              <mat-label>Email</mat-label>
+              <input type="email" formControlName="email" matInput>
+
+              <mat-hint
+                *ngIf="(loginForm.get('email')?.errors?.required && loginForm.get('email').touched) ||    (loginForm.get('email').errors?.required && isSubmitted)">
+                Email is required</mat-hint>
+
+              <mat-hint *ngIf="loginForm.get('email')?.errors?.email">
+                Pattern not match
+              </mat-hint>
+            </mat-form-field>
+
+            <mat-form-field class="w-100" appearance="standard">
+              <mat-label>Password</mat-label>
+              <input type="password" formControlName="password" matInput>
+              <mat-hint
+                *ngIf="(loginForm.get('password').errors?.required && loginForm.get('password').touched) || (loginForm.get('password').errors?.required && isSubmitted) ">
+                Password is required</mat-hint>
+              <mat-hint *ngIf="loginForm.get('password').errors?.minlength">
+                length is at least 5 characters
+              </mat-hint>
+            </mat-form-field>
+
+            <div class="form-button mt-2">
+              <button class="btn" type="submit">login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
