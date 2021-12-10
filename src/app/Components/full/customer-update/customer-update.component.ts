@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CustomerListService } from 'src/app/Services/customer-list.service';
 import { EventEmitter } from '@angular/core';
 
@@ -38,14 +38,10 @@ export class CustomerUpdateComponent implements OnInit {
       avatar: ''
     })
   }
-  onSave = new EventEmitter();
   onUpdate(formValue) {
     this.customerListSrv.updateCustomerList(this.data.data.id, formValue).subscribe((response) => {
       console.log(response);
-      // setTimeout(() => {
-      this.onSave.emit(response)
       this.dialogRef.close(response);
-      // }, 6000);
 
     }), err => {
       console.log(err);

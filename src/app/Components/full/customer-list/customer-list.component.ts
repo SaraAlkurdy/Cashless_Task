@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { CustomerListService } from 'src/app/Services/customer-list.service';
 import { CustomerUpdateComponent } from '../customer-update/customer-update.component';
 
@@ -10,25 +11,44 @@ import { CustomerUpdateComponent } from '../customer-update/customer-update.comp
 })
 export class CustomerListComponent implements OnInit {
 
+  customerList: any[];
+  total: any;
+  per_page: any;
+  p: number = 1;
 
   constructor(
-    private customerListSrv: CustomerListService,
+    public customerListSrv: CustomerListService,
     public dialog: MatDialog,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.customerListSrv.getCustomerList()
+    this.getCustomerList();
+  }
 
+  getCustomerList() {
+    this.activatedRoute.data.subscribe((response: any) => {
+      console.log(response);
+      this.customerList = response.customer.data;
+      this.total = response.customer.total
+      this.per_page = response.customer.per_page
+
+    })
   }
 
   pageChanged(event) {
     console.log(event);
     this.customerListSrv.p = event;
-    this.customerListSrv.getCustomerList()
+    this.customerListSrv.getCustomerList().subscribe(response => {
+      console.log(response);
+      this.customerList = response['data'];
+      this.total = response['total'];
+      this.per_page = response['per_page'];
+      this.p = response['page'];
+
+    })
   }
   openUpdateDialog(item) {
-    // create dialog and send throw it data and update form and rescive updated data 
-    //and get from data 
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = false;
@@ -41,9 +61,6 @@ export class CustomerListComponent implements OnInit {
 
     let dialogRef = this.dialog.open(CustomerUpdateComponent, dialogConfig
     );
-    dialogRef.componentInstance.onSave.subscribe(data => {
-      console.log('#######', data);
-    })
 
     dialogRef.afterClosed().subscribe(result => {
       // let transform = JSON.parse(result)

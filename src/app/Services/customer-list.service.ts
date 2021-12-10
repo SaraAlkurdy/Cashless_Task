@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -19,15 +19,16 @@ export class CustomerListService {
 
   //Customers List
   getCustomerList() {
-    return this.http.get('https://reqres.in/api/users?page=' + this.p).subscribe((response) => {
-      console.log(response);
-      this.total = response['total']
-      this.per_page = response['per_page']
-      this.customerList = response['data'];
-    }), err => {
-      console.log(err);
+    return this.http.get('https://reqres.in/api/users?page=' + this.p)
+    // .subscribe((response) => {
+    //   console.log(response);
+    //   this.total = response['total']
+    //   this.per_page = response['per_page']
+    //   this.customerList = response['data'];
+    // }), err => {
+    //   console.log(err);
 
-    }
+    // }
   }
 
   //Update Customer List
